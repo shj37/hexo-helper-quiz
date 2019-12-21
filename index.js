@@ -11,6 +11,7 @@ hexo.extend.tag.register('quiz', (args, content) => {
     const options = opts.trim().split('\n').map((item) => {
       const desc = marked(item.slice(4).trim());
       const choose = item.charAt(1) !== ' ';
+      
       return {
         choose: choose,
         desc: desc
@@ -28,10 +29,10 @@ hexo.extend.tag.register('quiz', (args, content) => {
     const opts = options.map(({choose, desc}) => {
       return `<label><input type="${type}" name="${name}" data-ans="${choose}">${desc}</label>`;
     }).join([]);
-    return `<div class="__quiz_prob__"><div class="__quiz_title__">${title}</div>${opts}</div>`;
+    return `<div class="__quiz_prob__"><div class="__quiz_title__">${title}</div>${opts}<div class="__quiz_answer__">答案:</div></div>`;
   }).join([]);
   return `<div class="__quiz__"><div class="__quiz_head__">${args.join(' ')}</div>${html}` + 
-         `<button class="__quiz_btn__">✔ Submit</button><div class="__quiz_sol__"></div></div>`;
+         `<button class="__quiz_btn__">✔ 提交答案</button><div class="__quiz_sol__"></div></div>`;
 }, { ends: true });
 
 hexo.extend.generator.register('quiz-script', (locals) => {
@@ -49,4 +50,3 @@ hexo.extend.filter.register('after_post_render', (data) => {
   }
   return data;
 });
-
