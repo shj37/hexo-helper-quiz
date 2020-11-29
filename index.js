@@ -32,7 +32,7 @@ hexo.extend.tag.register('quiz', (args, content) => {
     return `<div class="__quiz_prob__"><div class="__quiz_title__">${title}</div>${opts}<div class="__quiz_answer__">答案:</div></div>`;
   }).join([]);
   return `<div class="__quiz__"><div class="__quiz_head__">${args.join(' ')}</div>${html}` + 
-         `<button class="__quiz_btn__">✔ 提交答案</button><div class="__quiz_sol__"></div></div>`;
+         `<button class="__quiz_btn__">✔ 提交答案(SUBMIT)</button><div class="__quiz_sol__"></div></div>`;
 }, { ends: true });
 
 hexo.extend.generator.register('quiz-script', (locals) => {
